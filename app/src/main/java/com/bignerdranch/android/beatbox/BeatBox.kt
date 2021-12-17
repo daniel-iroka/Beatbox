@@ -6,19 +6,30 @@ import android.util.Log
 private const val TAG = "BeatBox"
 private const val SOUNDS_FOLDER = "sample_sounds"
 
-// TODO : WHEN I COME BACK, I WILL GO TO THROUGH MVVM AND DATA BINDING
-// TODO : THEN I WILL GO TO WIRING UP ASSETS...
+
 // This file is responsible for managing our sound assets. This includes finding, keeping track of them and playing the sounds
 class BeatBox(private val assets: AssetManager) {
+    val sounds: List<Sound>
 
-    fun loadSounds(): List<String> {
-        return try {
-            val soundNames = assets.list(SOUNDS_FOLDER)!!
-            Log.d(TAG, "Found ${soundNames.size} sounds")
-            soundNames.asList()
+    init {
+        sounds = loadSounds()
+    }
+
+    private fun loadSounds(): List<Sound> {
+        val soundNames: Array<String>
+
+        try {
+            soundNames = assets.list(SOUNDS_FOLDER)!!
         } catch (e:Exception) {
             Log.e(TAG, "Could not list assets", e)
-            emptyList()
+            return emptyList()
         }
+        val sounds = mutableListOf<Sound>()
+        soundNames.forEach { filename ->
+            val assetPath = "$SOUNDS_FOLDER/$filename"
+            val sound = Sound(assetPath)
+            sounds.add(sound)
+        }
+        return sounds
     }
 }
