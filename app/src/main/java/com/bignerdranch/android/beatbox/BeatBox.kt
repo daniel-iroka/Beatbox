@@ -8,6 +8,7 @@ private const val SOUNDS_FOLDER = "sample_sounds"
 
 
 // This file is responsible for managing our sound assets. This includes finding, keeping track of them and playing the sounds
+// This file is basically us getting the sounds...
 class BeatBox(private val assets: AssetManager) {
     val sounds: List<Sound>
 

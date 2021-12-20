@@ -3,9 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Passing data directly from the view model to our layout. -->
+    <data>
+        <variable
+            name="viewModel"
+            type="com.bignerdranch.android.beatbox.SoundViewModel" />
+    </data>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:text="@{viewModel.title}"
         tools:text="Sound name"
         android:layout_margin="3dp"/>
+
 </layout>
