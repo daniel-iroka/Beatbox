@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        beatBox.release() //
+        beatBox.release() // Same release function to drop sound after playing
     }
 
     private inner class SoundHolder(private val binding: ListItemSoundBinding):

@@ -30,7 +30,7 @@ class BeatBox(private val assets: AssetManager) {
         }
     }
 
-    //
+    // Release function to drop a sound after its playing
     fun release() {
         soundPool.release()
     }
