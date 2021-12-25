@@ -3,12 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="com.bignerdranch.android.beatbox.SoundViewModel" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,13 +24,11 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="2dp"
             android:padding="15dp"
-            android:max="200"
-            android:min="50"
+            android:max="100"
+            android:min="0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <!-- android:text="@{`Playback Speed` +(viewModel.play)+ `%`}" -->
 
         <TextView
             android:id="@+id/playback_textView"
@@ -49,5 +41,7 @@
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/volume_seekBar"
             app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

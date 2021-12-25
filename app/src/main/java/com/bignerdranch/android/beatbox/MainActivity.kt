@@ -3,19 +3,28 @@ package com.bignerdranch.android.beatbox
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.beatbox.databinding.ActivityMainBinding
 import com.bignerdranch.android.beatbox.databinding.ListItemSoundBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var beatBox: BeatBox
+    private lateinit var beatBox : BeatBox
+    private lateinit var beatBoxViewModel: BeatBoxViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         beatBox = BeatBox(assets)
+
+        // Using the FactoryModel technique...
+        val factoryModel =  BeatBoxFactoryModel(assets)
+        beatBoxViewModel = ViewModelProvider(this, factoryModel).get(BeatBoxViewModel::class.java)
+
 
         // This is to create(inflate) an Instance of our ActivityMainBinding binding class
         val binding: ActivityMainBinding =
@@ -25,6 +34,29 @@ class MainActivity : AppCompatActivity() {
             layoutManager = GridLayoutManager(context ,3)
             adapter = SoundAdapter(beatBox.sounds)
         }
+
+        val volumeSeekbar = findViewById<SeekBar>(R.id.volume_seekBar)
+        val playBackSpeed = findViewById<TextView>(R.id.playback_textView)
+        volumeSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                val p1 = progress.toString()
+                val p2 = progress / 100f  // this reduces the speed of the sound
+                val beatBox = beatBox
+                val percentageSign = getString(R.string.percentage)
+                beatBox.rate = p2
+                playBackSpeed.text = getString(R.string.seekBar_textView2, p1, percentageSign)
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+                // code for when progress is started
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+                // code for when progress is stopped
+            }
+
+        })
+
     }
 
     override fun onDestroy() {
