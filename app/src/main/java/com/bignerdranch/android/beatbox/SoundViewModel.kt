@@ -5,7 +5,6 @@ import androidx.databinding.Bindable
 
 // This file(Our MVVMs view model) is responsible for preparing the data our view will display which is a sound and a BeatBox to play that sound
 // and this is what our adapter will directly interact with
-// TODO : ADD A CUSTOM BUTTON STYLE FROM ANDROID OS.....
 
 class SoundViewModel(private val beatBox : BeatBox): BaseObservable() {
     fun onButtonClicked() {
