@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         beatBox = BeatBox(assets)
 
-        // Todo : When I come back, I will go through XML drawables again and go to : For the More Curious: 9-Patch Images
-
         // Using the FactoryModel technique...
         val factoryModel =  BeatBoxFactoryModel(assets)
         beatBoxViewModel = ViewModelProvider(this, factoryModel).get(BeatBoxViewModel::class.java)
