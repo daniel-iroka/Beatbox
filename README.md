@@ -8,4 +8,6 @@ BeatBox is a fun App that allows Users to engage in the sport of Boxing but only
 ### Note: There will be no separate project for the challenges
 
 
-# Screenshots
+## Screenshots
+
+<img src="FirstPicture.png" width=400>
