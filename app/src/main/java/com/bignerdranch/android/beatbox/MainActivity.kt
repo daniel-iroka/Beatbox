@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         beatBox = BeatBox(assets)
 
         // Using the FactoryModel technique...
@@ -54,9 +55,7 @@ class MainActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(p0: SeekBar?) {
                 // code for when progress is stopped
             }
-
         })
-
     }
 
     override fun onDestroy() {
